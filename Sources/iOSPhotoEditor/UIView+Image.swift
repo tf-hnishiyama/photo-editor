@@ -8,6 +8,7 @@
 
 import UIKit
 
+@MainActor
 extension UIView {
     /**
      Convert UIView to UIImage

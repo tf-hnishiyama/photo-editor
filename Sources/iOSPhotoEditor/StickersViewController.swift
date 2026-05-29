@@ -8,6 +8,7 @@
 
 import UIKit
 
+@MainActor
 class StickersViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var holdView: UIView!

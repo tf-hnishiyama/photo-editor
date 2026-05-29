@@ -8,6 +8,7 @@
 
 import UIKit
 
+@MainActor
 class EmojisCollectionViewDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     var stickersViewControllerDelegate : StickersViewControllerDelegate?

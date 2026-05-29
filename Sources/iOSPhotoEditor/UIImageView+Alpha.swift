@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@MainActor
 extension UIImageView {
     
     func alphaAtPoint(_ point: CGPoint) -> CGFloat {

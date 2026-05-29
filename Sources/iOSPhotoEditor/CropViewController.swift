@@ -8,11 +8,13 @@
 
 import UIKit
 
+@MainActor
 public protocol CropViewControllerDelegate: class {
     func cropViewController(_ controller: CropViewController, didFinishCroppingImage image: UIImage, transform: CGAffineTransform, cropRect: CGRect)
     func cropViewControllerDidCancel(_ controller: CropViewController)
 }
 
+@MainActor
 open class CropViewController: UIViewController {
     open weak var delegate: CropViewControllerDelegate?
     open var image: UIImage? {

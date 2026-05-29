@@ -8,6 +8,7 @@
 
 import UIKit
 
+@MainActor
 class StickerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var stickerImage: UIImageView!
 

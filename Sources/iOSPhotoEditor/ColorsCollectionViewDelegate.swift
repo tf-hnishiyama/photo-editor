@@ -8,6 +8,7 @@
 
 import UIKit
 
+@MainActor
 class ColorsCollectionViewDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var colorDelegate : ColorDelegate?

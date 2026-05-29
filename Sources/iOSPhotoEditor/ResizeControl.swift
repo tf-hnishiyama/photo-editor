@@ -8,12 +8,14 @@
 
 import UIKit
 
+@MainActor
 protocol ResizeControlDelegate: class {
     func resizeControlDidBeginResizing(_ control: ResizeControl)
     func resizeControlDidResize(_ control: ResizeControl)
     func resizeControlDidEndResizing(_ control: ResizeControl)
 }
 
+@MainActor
 class ResizeControl: UIView {
     weak var delegate: ResizeControlDelegate?
     var translation = CGPoint.zero
