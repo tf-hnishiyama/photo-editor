@@ -8,6 +8,7 @@
 
 import UIKit
 
+@objc(EmojiCollectionViewCell)
 @MainActor
 class EmojiCollectionViewCell: UICollectionViewCell {
 

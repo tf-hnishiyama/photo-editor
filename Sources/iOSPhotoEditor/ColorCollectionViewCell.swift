@@ -8,6 +8,7 @@
 
 import UIKit
 
+@objc(ColorCollectionViewCell)
 @MainActor
 class ColorCollectionViewCell: UICollectionViewCell {
     
