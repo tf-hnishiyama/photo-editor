@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@MainActor
 extension PhotoEditorViewController {
     
     @objc func keyboardDidShow(notification: NSNotification) {

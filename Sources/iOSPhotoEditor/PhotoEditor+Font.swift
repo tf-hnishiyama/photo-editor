@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@MainActor
 extension PhotoEditorViewController {
     
     //Resources don't load in main bundle we have to register the font

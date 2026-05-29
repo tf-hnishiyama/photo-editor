@@ -7,6 +7,7 @@
 //
 import UIKit
 
+@MainActor
 extension PhotoEditorViewController {
     
     override public func touchesBegan(_ touches: Set<UITouch>,

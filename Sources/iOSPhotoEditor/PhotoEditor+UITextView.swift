@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@MainActor
 extension PhotoEditorViewController: UITextViewDelegate {
     
     public func textViewDidChange(_ textView: UITextView) {

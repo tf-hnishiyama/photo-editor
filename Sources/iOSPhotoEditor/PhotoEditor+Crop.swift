@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: - CropView
+@MainActor
 extension PhotoEditorViewController: CropViewControllerDelegate {
     
     public func cropViewController(_ controller: CropViewController, didFinishCroppingImage image: UIImage, transform: CGAffineTransform, cropRect: CGRect) {

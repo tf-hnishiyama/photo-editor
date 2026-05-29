@@ -20,6 +20,7 @@ public enum control {
     case clear
 }
 
+@MainActor
 extension PhotoEditorViewController {
 
      //MARK: Top Toolbar
