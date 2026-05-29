@@ -73,6 +73,10 @@ public final class PhotoEditorViewController: UIViewController {
     
     var stickersViewController: StickersViewController!
 
+    public convenience init() {
+        self.init(nibName: "PhotoEditorViewController", bundle: Bundle.photoEditorResourceBundle)
+    }
+
     //Register Custom font before we load XIB
     public override func loadView() {
         registerFont()
@@ -102,7 +106,7 @@ public final class PhotoEditorViewController: UIViewController {
         
         
         configureCollectionView()
-        stickersViewController = StickersViewController(nibName: "StickersViewController", bundle: Bundle(for: StickersViewController.self))
+        stickersViewController = StickersViewController(nibName: "StickersViewController", bundle: Bundle.photoEditorResourceBundle)
         hideControls()
     }
     
@@ -122,7 +126,7 @@ public final class PhotoEditorViewController: UIViewController {
         colorsCollectionView.dataSource = colorsCollectionViewDelegate
         
         colorsCollectionView.register(
-            UINib(nibName: "ColorCollectionViewCell", bundle: Bundle(for: ColorCollectionViewCell.self)),
+            UINib(nibName: "ColorCollectionViewCell", bundle: Bundle.photoEditorResourceBundle),
             forCellWithReuseIdentifier: "ColorCollectionViewCell")
     }
     
