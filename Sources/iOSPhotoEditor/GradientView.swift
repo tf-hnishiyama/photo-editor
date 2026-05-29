@@ -18,7 +18,7 @@ class GradientView: UIView {
     nonisolated override func awakeFromNib() {
         super.awakeFromNib()
         
-        Task { @MainActor in
+        MainActor.assumeIsolated {
             if gradientFromtop == false {
                 gradientLayer.colors = [UIColor.clear.cgColor, UIColor(white: 0.0, alpha: 0.5).cgColor]
             } else {

@@ -114,11 +114,30 @@ open class CropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate, 
     fileprivate let bottomOverlayView = UIView()
     fileprivate var insetRect = CGRect.zero
     fileprivate var editingRect = CGRect.zero
-    fileprivate var interfaceOrientation = UIDevice.current.orientation
+    fileprivate var interfaceOrientation: UIInterfaceOrientation = .portrait
     fileprivate var resizing = false
     fileprivate var usingCustomImageView = false
     fileprivate let MarginTop: CGFloat = 37.0
     fileprivate let MarginLeft: CGFloat = 20.0
+    
+    // 画面の向きを安全・モダンに取得するプロパティ
+    fileprivate var currentInterfaceOrientation: UIInterfaceOrientation {
+        if let windowScene = self.window?.windowScene {
+            if #available(iOS 16.0, *) {
+                return windowScene.effectiveGeometry.interfaceOrientation
+            } else {
+                return windowScene.interfaceOrientation
+            }
+        }
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if #available(iOS 16.0, *) {
+                return windowScene.effectiveGeometry.interfaceOrientation
+            } else {
+                return windowScene.interfaceOrientation
+            }
+        }
+        return .portrait
+    }
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -159,6 +178,8 @@ open class CropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate, 
         addSubview(leftOverlayView)
         addSubview(rightOverlayView)
         addSubview(bottomOverlayView)
+        
+        self.interfaceOrientation = currentInterfaceOrientation
     }
     
     open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
@@ -179,7 +200,7 @@ open class CropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate, 
     
     open override func layoutSubviews() {
         super.layoutSubviews()
-        let interfaceOrientation = UIDevice.current.orientation
+        let interfaceOrientation = currentInterfaceOrientation
         
         if image == nil && imageView == nil {
             return
@@ -220,7 +241,6 @@ open class CropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate, 
             }
         }
         
-        
         self.interfaceOrientation = interfaceOrientation
     }
     
@@ -257,9 +277,9 @@ open class CropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate, 
     open func zoomedCropRect() -> CGRect {
         let cropRect = convert(scrollView.frame, to: zoomingView)
         var ratio: CGFloat = 1.0
-        let device = UIDevice.current
-        let orientation = device.orientation
-        if (device.userInterfaceIdiom == .pad || orientation.isPortrait) {
+        
+        let orientation = currentInterfaceOrientation
+        if (UIDevice.current.userInterfaceIdiom == .pad || orientation.isPortrait) {
             ratio = AVMakeRect(aspectRatio: imageSize, insideRect: insetRect).width / imageSize.width
         } else {
             ratio = AVMakeRect(aspectRatio: imageSize, insideRect: insetRect).height / imageSize.height
@@ -305,7 +325,7 @@ open class CropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate, 
     }
     
     fileprivate func setupEditingRect() {
-        let interfaceOrientation = UIDevice.current.orientation
+        let interfaceOrientation = currentInterfaceOrientation
         if interfaceOrientation.isPortrait {
             editingRect = bounds.insetBy(dx: MarginLeft, dy: MarginTop)
         } else {
@@ -485,7 +505,7 @@ open class CropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate, 
     }
     
     // MARK: - Gesture Recognizer delegate methods
-    open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    open func gestureRecognizer(_ gestureRecognizer: UIRotationGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
 }
