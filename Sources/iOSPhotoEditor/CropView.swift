@@ -119,8 +119,6 @@ open class CropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate, 
     fileprivate var usingCustomImageView = false
     fileprivate let MarginTop: CGFloat = 37.0
     fileprivate let MarginLeft: CGFloat = 20.0
-    
-    // 画面の向きを安全・モダンに取得するプロパティ
     fileprivate var currentInterfaceOrientation: UIInterfaceOrientation {
         if let windowScene = self.window?.windowScene {
             if #available(iOS 16.0, *) {
@@ -505,7 +503,7 @@ open class CropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate, 
     }
     
     // MARK: - Gesture Recognizer delegate methods
-    open func gestureRecognizer(_ gestureRecognizer: UIRotationGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
 }
