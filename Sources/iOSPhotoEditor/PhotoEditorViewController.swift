@@ -8,6 +8,7 @@
 
 import UIKit
 
+@MainActor
 public final class PhotoEditorViewController: UIViewController {
     
     /** holding the 2 imageViews original image and drawing & stickers */
