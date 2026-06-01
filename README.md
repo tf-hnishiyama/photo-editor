@@ -69,7 +69,7 @@ $ pod install
 The `PhotoEditorViewController`.
 
 ```swift
-let photoEditor = PhotoEditorViewController(nibName:"PhotoEditorViewController",bundle: Bundle(for: PhotoEditorViewController.self))
+let photoEditor = PhotoEditorViewController()
 
 //PhotoEditorDelegate
 photoEditor.photoEditorDelegate = self
@@ -88,6 +88,11 @@ photoEditor.colors = [.red,.blue,.green]
 
 //Present the View Controller
 present(photoEditor, animated: true, completion: nil)
+```
+
+**Note**: You can also use the traditional initialization method if needed:
+```swift
+let photoEditor = PhotoEditorViewController(nibName: "PhotoEditorViewController", bundle: Bundle.photoEditorResourceBundle)
 ```
 The `PhotoEditorDelegate` methods.
 
