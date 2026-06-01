@@ -1,0 +1,15 @@
+{
+  "originHash" : "94af04f27a64ae85f7240265b0e4a5add471185afeedd8fb73e391273f93d871",
+  "pins" : [
+    {
+      "identity" : "photo-editor",
+      "kind" : "localSourceControl",
+      "location" : "/Users/hnishiyama/Documents/repositories/photo-editor",
+      "state" : {
+        "branch" : "feature/spm-swift6",
+        "revision" : "58933a50dc156dedb24370e89bd7b7843a6d20eb"
+      }
+    }
+  ],
+  "version" : 3
+}
